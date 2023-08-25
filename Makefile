@@ -4,7 +4,7 @@ configure:
 build:
 	docker build -t website-local .
 run:
-	docker run -it  website-local     
+	@docker run -it  website-local     
 
 # run:
 # 	source virtual/bin/activate && virtual/bin/python 

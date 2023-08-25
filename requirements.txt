@@ -1,6 +1,11 @@
+setuptools
+setuptools_rust
 django-postgresql
 Django>=4.0.4
-django-crispy-forms
-django-tinymce
-django-allauth
-django-mptt
+django-crispy-forms==1.14
+django-tinymce==3.4.0
+django-allauth>=0.50.0
+django-mptt>=s0.13.4
+psycopg2
+numpy>=1.25.2
+
