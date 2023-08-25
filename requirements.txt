@@ -1,0 +1,6 @@
+django-postgresql
+Django>=4.0.4
+django-crispy-forms
+django-tinymce
+django-allauth
+django-mptt
