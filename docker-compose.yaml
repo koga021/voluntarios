@@ -1,0 +1,23 @@
+version: '3.4'
+services:
+    app:
+        image: website-local
+        container_name: app
+        ports:
+          - 8000:8000
+        depends_on:
+          - postgres
+    
+    postgres:
+        #image: postgres
+        image: postgres-local
+        #volumes:
+        #  - ./01-basegeografica.sql:/docker-entrypoint-initdb.d/01-basegeografica.sql
+        #  - ./02-basegeografica.sql:/docker-entrypoint-initdb.d/02-basegeografica.sql
+        environment:
+          TZ: "America/Sao_Paulo"
+          POSTGRES_PASSWORD: "Postgres2023!"
+          POSTGRES_USER: "user-admin-website"
+          POSTGRES_DB: "db_website"
+        ports:
+          - "5432:5432"
