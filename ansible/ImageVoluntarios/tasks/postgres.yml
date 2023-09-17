@@ -1,0 +1,45 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Iniciando Postgress Novo
+    ansible.builtin.sysvinit:
+      name: postgresql
+      state: started
+      enabled: yes
+      sleep : 5
+
+  - name: Ensure the PostgreSQL service is running
+    service: name=postgresql state=started enabled=yes
+
+  # - name: Iniciando o PostgreSQL
+  #   ansible.builtin.systemd:
+  #     state: started
+  #     name: postgresql
+
+  # - name: Reiniciando o PostgreSQL
+  #   ansible.builtin.systemd:
+  #     state: restarted
+  #     name: postgresql
+  #     pattern: "/usr/lib/postgresql/14/bin/postgres -D"
+
+
+  - name: Criando Banco de Dados no Postgress
+    ansible.builtin.shell: createdb website
+    become: true
+    become_user: postgres
+
+  # - name: Reiniciando o PostgreSQL novamente
+  #   ansible.builtin.systemd:
+  #   state: restarted
+  #   name: postgresql
+
+  - name: Adicionando postgis extension no banco website 
+    community.postgresql.postgresql_ext:
+      name: postgis
+      db: website
+      state: present
+      login_host: "localhost"
+      login_user: "postgres"
+      #login_password: ""
+
+

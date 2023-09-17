@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Instalando Pacotes Default
+    apt:
+      name:
+      - cmake
+      - git
+      - python3-psycopg2
+      - python3-pip
+      - systemctl
+      - vim
+      - sudo
+  - name: Instalando Postgres 
+    apt:
+      name:
+      - libpq-dev
+      - postgresql-contrib
+      - postgresql
+      - postgis
+      - cmake
+
+  - name: Install and upgrade pip
+    pip:
+      name: pip
+      extra_args: --upgrade
+      executable: pip3
+
+  - name: Instalando Pacotes Python
+    ansible.builtin.pip:
+      requirements: ../../requirements.txt
