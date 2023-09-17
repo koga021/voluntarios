@@ -52,3 +52,6 @@
 
 
 
+#python3 manage.py makemigrations vol
+#python3 manage.py makemigrations notification
+#python3 manage.py migrate

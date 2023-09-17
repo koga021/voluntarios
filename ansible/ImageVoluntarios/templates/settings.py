@@ -20,12 +20,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'SET IN LOCAL SETTINGS'
+SECRET_KEY = '123456'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['voluntarios.com.br']
+#ALLOWED_HOSTS = ['voluntarios.com.br']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 # E-mail configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
