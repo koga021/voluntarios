@@ -23,23 +23,32 @@
   #     pattern: "/usr/lib/postgresql/14/bin/postgres -D"
 
 
-  - name: Criando Banco de Dados no Postgress
-    ansible.builtin.shell: createdb website
-    become: true
-    become_user: postgres
+  # - name: Criando Banco de Dados no Postgress
+  #   ansible.builtin.shell: createdb website
+  #   become: true
+  #   become_user: postgres
 
-  # - name: Reiniciando o PostgreSQL novamente
-  #   ansible.builtin.systemd:
-  #   state: restarted
-  #   name: postgresql
+  # - name: Criando o Banco Website
+  #   become_user: postgres
+  #   community.postgresql.postgresql_user:
+  #     #db: 
+  #     name: website
+  #     login_user: postgres
+
+  - name: Criando o Banco website no Postgres
+    become_user: postgres
+    become: true
+    community.postgresql.postgresql_db:
+      name: website
+
 
   - name: Adicionando postgis extension no banco website 
+    become_user: postgres
+    become: true
     community.postgresql.postgresql_ext:
       name: postgis
       db: website
       state: present
-      login_host: "localhost"
-      login_user: "postgres"
-      #login_password: ""
+
 
 

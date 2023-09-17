@@ -1,3 +1,3 @@
 ansible-install:
-	ansible-playbook tasks/main.yml -i localhost
+	ansible-playbook tasks/main.yml -i localhost -vvv
 
